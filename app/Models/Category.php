@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -61,4 +62,32 @@ class Category extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    /**
+     * Товары в составе категории.
+     *
+     * @return BelongsToMany
+     */
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
+    /**
+     * Перечень родительских категорий в иерархии подчинённости каталога товаров.
+     *
+     * @return \Generator
+     */
+    public function parentCategories(): \Generator
+    {
+        $category = $this;
+        while (!is_null($category)) {
+            if (!$category->is($this)) {
+                yield $category;
+            }
+
+            $category = $category->category;
+        }
+    }
+
 }
