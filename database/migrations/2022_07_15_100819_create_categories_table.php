@@ -25,8 +25,12 @@ return new class extends Migration
                 ->comment('Родительская категория товаров.')
                 ->constrained();
 
-            $table->string('vendor_url', 255)
+            $table->string('vendor_id', 32)
                 ->index()
+                ->nullable()
+                ->comment('ИД поставщика.');
+
+            $table->text('vendor_url')
                 ->nullable()
                 ->comment('Ссылка на сайте поставщика.');
 
