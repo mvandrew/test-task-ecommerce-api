@@ -5,6 +5,12 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+/**
+ * Database\Seeders\DatabaseSeeder
+ *
+ * @Class DatabaseSeeder Начальное наполнение базы данных.
+ * @package Database\Seeders
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,12 +25,5 @@ class DatabaseSeeder extends Seeder
                 CategorySeeder::class
             ]
         );
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
