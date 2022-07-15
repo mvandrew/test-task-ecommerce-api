@@ -49,3 +49,9 @@ $ ./sail.sh up
 ```shell
 $ ./sail.sh artisan migrate
 ```
+
+### 5. Наполните базу данных тестовыми записями
+
+```shell
+$ ./sail.sh artisan db:seed
+```
