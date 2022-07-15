@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
@@ -19,10 +20,14 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
+     * @param    UrlGenerator    $urlGenerator
+     *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $urlGenerator): void
     {
-        //
+        if ( config('app.enforce_ssl') ) {
+            $urlGenerator->forceScheme('https');
+        }
     }
 }

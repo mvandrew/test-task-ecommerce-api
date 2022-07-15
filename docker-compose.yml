@@ -2,6 +2,7 @@
 version: '3'
 services:
     laravel.test:
+        container_name: ${APP_PROJECT}_app
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
@@ -21,10 +22,12 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - sail
+            - tt-min-api
         depends_on:
             - mysql
+
     mysql:
+        container_name: ${APP_PROJECT}_mysql
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
@@ -36,17 +39,19 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
-            - 'sail-mysql:/var/lib/mysql'
+            - 'tt-min-api-mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
-            - sail
+            - tt-min-api
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
+
 networks:
-    sail:
+    tt-min-api:
         driver: bridge
+
 volumes:
-    sail-mysql:
+    tt-min-api-mysql:
         driver: local
