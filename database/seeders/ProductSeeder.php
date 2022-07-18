@@ -53,7 +53,6 @@ class ProductSeeder extends Seeder
                     {
                         $product->categories()->attach($category->id);
                     }
-                    die('ok');
                 }
             }
 
