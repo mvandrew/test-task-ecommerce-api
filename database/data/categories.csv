@@ -1,0 +1,70 @@
+title,url,parent
+Смартфоны,/catalog/smartfony,
+Apple,/catalog/smartfony/apple,/catalog/smartfony
+Samsung,/catalog/smartfony/samsung,/catalog/smartfony
+Honor,/catalog/smartfony/honor,/catalog/smartfony
+Xiaomi,/catalog/smartfony/xiaomi,/catalog/smartfony
+Huawei,/catalog/smartfony/huawei,/catalog/smartfony
+Poco,/catalog/smartfony/poco,/catalog/smartfony
+Vivo,/catalog/smartfony/vivo,/catalog/smartfony
+OPPO,/catalog/smartfony/oppo,/catalog/smartfony
+Realme,/catalog/smartfony/realme,/catalog/smartfony
+Смартфоны с eSIM,/catalog/smartfony/sim-esim/?id=61367_277669,/catalog/smartfony
+Умные часы и трекеры,/catalog/gadzhety/umnye-veshchi,
+Умные часы,/catalog/gadzhety/umnye-veshchi/umnye-chasy,/catalog/gadzhety/umnye-veshchi
+Фитнес-браслеты,/catalog/gadzhety/umnye-veshchi/fitnes-braslety,/catalog/gadzhety/umnye-veshchi
+Детские часы,/catalog/gadzhety/umnye-veshchi/detskie-chasy,/catalog/gadzhety/umnye-veshchi
+Умные часы для пожилых,/catalog/gadzhety/umnye-veshchi/umnye-chasy/dlya-pozhilykh,/catalog/gadzhety/umnye-veshchi
+Ремешки для умных часов и фитнес-браслетов,/catalog/gadzhety/umnye-veshchi/remeshki,/catalog/gadzhety/umnye-veshchi
+Аксессуары,/catalog/aksessuary,
+Наушники,/catalog/aksessuary/naushniki,/catalog/aksessuary
+Колонки и аудиотехника,/catalog/aksessuary/kolonki-i-audiotekhnika,/catalog/aksessuary
+Экшн-камеры,/catalog/gadzhety/nosimye-ustrojstva/ehkshn-kamery,/catalog/aksessuary
+Микрофоны,/catalog/aksessuary/kolonki-i-audiotekhnika/microfony,/catalog/aksessuary
+Пульты ДУ,/catalog/aksessuary/drugoe/pdu/?id=269860_351598,/catalog/aksessuary
+Защита устройств,/catalog/aksessuary/zashchita-ustroystv,/catalog/aksessuary
+Память устройств,/catalog/aksessuary/pamatj-ustroystv,/catalog/aksessuary
+Питание устройств,/catalog/aksessuary/pitanie-ustroystv,/catalog/aksessuary
+Другое,/catalog/aksessuary/drugoe,/catalog/aksessuary
+Умный дом,/catalog/gadzhety/umnyy-dom,
+Умные колонки,/catalog/aksessuary/kolonki-i-audiotekhnika/umnye-kolonki,/catalog/gadzhety/umnyy-dom
+Умные приборы,/catalog/gadzhety/umnyy-dom/umnye-pribory/?id=269860_391180&id=269860_276031&id=269860_390568&id=269860_390556&id=269860_378346&id=269860_275557&id=269860_392368&id=269860_380494&id=269860_395860&id=269860_341224&id=269860_353146&id=269860_341470&id=269860_380488&id=269860_413206&id=269860_341638&id=269860_377206&id=269860_375430&id=269860_370162&id=269860_305998&id=269860_370180&id=269860_373048,/catalog/gadzhety/umnyy-dom
+Усилители сигнала,/catalog/gadzhety/umnyy-dom/usiliteli-signala/?id=269860_352930,/catalog/gadzhety/umnyy-dom
+Центр управления умным домом,/catalog/gadzhety/umnyy-dom/centr-upravleniya-umnym-domom/?id=269860_379840,/catalog/gadzhety/umnyy-dom
+Датчики,/catalog/gadzhety/umnyy-dom/datchiki/?id=269860_379918&id=269860_340162&id=269860_340156&id=269860_392356&id=269860_340168&id=269860_379822&id=269860_340174&id=269860_340180,/catalog/gadzhety/umnyy-dom
+Другое,/catalog/gadzhety/drugoe-uvg,/catalog/gadzhety/umnyy-dom
+Спорт и отдых,/catalog/sport-i-otdykh,
+Электротранспорт,/catalog/sport-i-otdykh/transport/elektrotransport/?id=269860_426418&id=269860_426448&id=269860_426442&id=269860_393508,/catalog/sport-i-otdykh
+Для отдыха,/catalog/gadzhety/dly-otdykha/?id=269860_426730&id=269860_426736,/catalog/sport-i-otdykh
+Умная скакалка,/catalog/sport-i-otdykh/fitnes/umnaya-skakalka/?id=269860_414604,/catalog/sport-i-otdykh
+Весы,/catalog/gadzhety/umnyy-dom/umnye-pribory/bytovaya-tekhnika/vesy/?id=269860_276031,/catalog/sport-i-otdykh
+Планшеты,/catalog/gadzhety/planshety,
+Apple,/catalog/gadzhety/planshety/apple,/catalog/gadzhety/planshety
+Samsung,/catalog/gadzhety/planshety/samsung,/catalog/gadzhety/planshety
+Huawei,/catalog/gadzhety/planshety/huawei,/catalog/gadzhety/planshety
+Lenovo,/catalog/gadzhety/planshety/lenovo,/catalog/gadzhety/planshety
+Prestigio,/catalog/gadzhety/planshety/prestigio,/catalog/gadzhety/planshety
+Планшеты с eSIM,/catalog/gadzhety/planshety/sim-esim/?id=61367_277669,/catalog/gadzhety/planshety
+Чехлы для планшетов,/catalog/aksessuary/zashchita-ustroystv/chekhly/chekhly-dlya-planshetov,/catalog/gadzhety/planshety
+Стилусы,/catalog/aksessuary/drugoe/stilusy,/catalog/gadzhety/planshety
+Ноутбуки,/catalog/kompyuternaya-tekhnika/noutbuki,
+Honor,/catalog/noutbuki/honor,/catalog/kompyuternaya-tekhnika/noutbuki
+Клавиатуры и мыши для компьютера,/catalog/aksessuary/drugoe/kompyuternye-myshi-i-klaviatury,/catalog/kompyuternaya-tekhnika/noutbuki
+Модемы и роутеры,/catalog/vse-modemy-i-routery,
+Модемы и роутеры,/catalog/vse-modemy-i-routery,/catalog/vse-modemy-i-routery
+Модемы и роутеры 3G/4G,/catalog/modemy-i-routery-3g-4g,/catalog/vse-modemy-i-routery
+Модемы и роутеры без SIM,/catalog/modemy-i-routery-3g-4g-no-sim,/catalog/vse-modemy-i-routery
+Онлайн-кассы,/catalog/online-cassy,/catalog/vse-modemy-i-routery
+МТС ТВ,/catalog/sputnikovoe-tv,/catalog/vse-modemy-i-routery
+Бытовая техника,/catalog/gadzhety/umnyy-dom/umnye-pribory/bytovaya-tekhnika,
+Пылесосы,/catalog/gadzhety/vse-dlya-doma/pylesosy,/catalog/gadzhety/umnyy-dom/umnye-pribory/bytovaya-tekhnika
+Техника для дома,/catalog/gadzhety/umnyy-dom/melkaya-bytovaya-tekhnika/?id=269860_392014&id=269860_395860&id=269860_341224,/catalog/gadzhety/umnyy-dom/umnye-pribory/bytovaya-tekhnika
+Мелкая кухонная техника,/catalog/gadzhety/umnyy-dom/melkaya-kukhonnaya-tekhnika/?id=269860_395236,/catalog/gadzhety/umnyy-dom/umnye-pribory/bytovaya-tekhnika
+Красота и здоровье,/catalog/gadzhety/umnyy-dom/krasota-i-zdorovje/?id=269860_390556&id=269860_370180&id=269860_373048,/catalog/gadzhety/umnyy-dom/umnye-pribory/bytovaya-tekhnika
+"ТВ, мониторы, развлечения",/catalog/tv-monitory-razvlecheniya,
+Телевизоры,/catalog/televizory,/catalog/tv-monitory-razvlecheniya
+Медиаплееры,/catalog/sputnikovoe-tv/interactive-tv/mediapleery,/catalog/tv-monitory-razvlecheniya
+Проекторы,/catalog/proektory,/catalog/tv-monitory-razvlecheniya
+Игровые платформы,/catalog/razvlecheniya,/catalog/tv-monitory-razvlecheniya
+Мониторы,/catalog/monitory,/catalog/tv-monitory-razvlecheniya
+МТС ТВ,/catalog/sputnikovoe-tv,/catalog/tv-monitory-razvlecheniya
