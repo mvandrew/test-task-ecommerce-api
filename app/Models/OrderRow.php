@@ -47,6 +47,20 @@ class OrderRow extends Model
     ];
 
     /**
+     * Обработка сохранения записи.
+     *
+     * @param    array    $options
+     *
+     * @return bool
+     */
+    public function save(array $options = []): bool
+    {
+        $this->amount = round($this->price * $this->qty, 2);
+
+        return parent::save($options);
+    }
+
+    /**
      * Заказ покупателя по строке.
      *
      * @return BelongsTo
