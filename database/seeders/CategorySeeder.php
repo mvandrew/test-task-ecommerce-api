@@ -24,17 +24,15 @@ class CategorySeeder extends Seeder
     {
         $isFirstRow = true;
         if (($handle = fopen(database_path('/data/categories.csv'), 'r')) !== false) {
-            while (($row = fgetcsv($handle, 1000)) !== false) {
+            while (($row = fgetcsv($handle, 2000)) !== false) {
                 if ($isFirstRow) {
                     $isFirstRow = false;
-                } else {
-                    if ((is_null($parentCategory) && empty($row[2])) || $parentCategory == $row[2]) {
-                        yield [
-                            'name'      => $row[0],
-                            'url'       => $row[1],
-                            'parent'    => $row[2]
-                        ];
-                    }
+                } elseif ((is_null($parentCategory) && empty($row[2])) || $parentCategory == $row[2]) {
+                    yield [
+                        'name'      => $row[0],
+                        'url'       => $row[1],
+                        'parent'    => $row[2]
+                    ];
                 }
             }
 
