@@ -4,6 +4,7 @@ namespace App\Lib\Orders;
 
 use App\Exceptions\EmptyOrderProducts;
 use App\Exceptions\OrderCreationRequest;
+use App\Exceptions\OrderNotFound;
 use App\Exceptions\OrderOutOfStock;
 use App\Exceptions\OrderRowVerification;
 use App\Exceptions\ProductNotFound;
@@ -69,7 +70,8 @@ class OrderManager
 
         // Формирование заказа на основании данных запроса.
         //
-        DB::transaction(function () use ($orderProducts, $user, $orderData) {
+        $orderId = null;
+        DB::transaction(function () use ($orderProducts, $user, $orderData, &$orderId) {
 
             // Формирование заказа в журнале.
             //
@@ -118,9 +120,44 @@ class OrderManager
                     $orderRow->save();
                 }
             }
+
+            $orderId = $order->id;
         });
 
+        if (!is_null($orderId)) {
+            return self::show($orderId);
+        }
+
         return null;
+    }
+
+    /**
+     * Возвращает данные заданного заказа.
+     *
+     * @param    int    $orderId    ИД заказа.
+     *
+     * @return array
+     * @throws OrderNotFound
+     */
+    public static function show(int $orderId): array
+    {
+        if (is_null($order = Order::whereId($orderId)->first())) {
+            throw new OrderNotFound($orderId);
+        } else {
+            $data = $order->toArray();
+            $data['rows'] = OrderRow::whereOrderId($order->id)
+                ->get(
+                    [
+                        'product_id',
+                        'qty',
+                        'price',
+                        'amount'
+                    ]
+                )
+                ->toArray();
+
+            return $data;
+        }
     }
 
 }

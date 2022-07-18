@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -78,5 +79,31 @@ class OrderRow extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * Описание взаимодействия с полем цены по строке.
+     *
+     * @return Attribute
+     */
+    protected function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => (float)$value,
+            set: fn ($value) => $value
+        );
+    }
+
+    /**
+     * Описание взаимодействия с полем суммы по строке.
+     *
+     * @return Attribute
+     */
+    protected function amount(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => (float)$value,
+            set: fn ($value) => $value
+        );
     }
 }

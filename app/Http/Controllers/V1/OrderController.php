@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Exceptions\EmptyOrderProducts;
+use App\Exceptions\OrderNotFound;
 use App\Http\Controllers\Controller;
 use App\Lib\Orders\OrderManager;
 use http\Client\Curl\User;
@@ -42,14 +43,20 @@ class OrderController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Возвращает данные заданного заказа.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param    int    $id
+     *
+     * @return JsonResponse
+     * @throws OrderNotFound
      */
-    public function show($id)
+    public function show(int $id): JsonResponse
     {
-        //
+        return response()->json(
+            [
+                'data' => OrderManager::show($id)
+            ]
+        );
     }
 
     /**

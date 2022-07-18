@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -57,6 +58,10 @@ class Order extends Model
         'sum_amount'
     ];
 
+    protected $hidden = [
+        'manager_comment'
+    ];
+
     /**
      * Владелец заказа.
      *
@@ -75,5 +80,18 @@ class Order extends Model
     public function orderRows(): HasMany
     {
         return $this->hasMany(OrderRow::class);
+    }
+
+    /**
+     * Описание взаимодействия с полем суммы заказа.
+     *
+     * @return Attribute
+     */
+    protected function sumAmount(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => (float)$value,
+            set: fn ($value) => $value
+        );
     }
 }
