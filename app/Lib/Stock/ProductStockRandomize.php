@@ -2,6 +2,8 @@
 
 namespace App\Lib\Stock;
 
+use App\Models\Product;
+
 /**
  * App\Lib\Stock\ProductStockRandomize
  *
@@ -12,6 +14,12 @@ class ProductStockRandomize
 {
     public function __invoke(): void
     {
-        // TODO: Implement __invoke() method.
+        Product::chunk(100, function ($products) {
+            /** @var Product $product */
+            foreach ($products as $product) {
+                $product->stock = rand(0, 200);
+                $product->save();
+            }
+        });
     }
 }
