@@ -14,12 +14,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $id
  * @property string $name Наименование товара.
  * @property string|null $sku Артикул.
+ * @property string|null $vendor_id ИД поставщика.
  * @property string|null $vendor_url Ссылка на сайте поставщика.
  * @property string|null $price Цена за единицу товара.
  * @property int $stock Остаток товара на складе.
  * @property int $in_stock Флаг наличия товара на складе.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property-read int|null $categories_count
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -31,6 +34,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereSku($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereStock($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereVendorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereVendorUrl($value)
  * @mixin \Eloquent
  */

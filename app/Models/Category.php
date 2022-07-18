@@ -16,9 +16,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $id
  * @property string $name Наименование категории товаров.
  * @property int|null $category_id Родительская категория товаров.
+ * @property string|null $vendor_id ИД поставщика.
  * @property string|null $vendor_url Ссылка на сайте поставщика.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read Category|null $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
@@ -27,11 +33,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereVendorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereVendorUrl($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $categories
- * @property-read int|null $categories_count
- * @property-read Category|null $category
  */
 class Category extends Model
 {
