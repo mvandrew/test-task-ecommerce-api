@@ -55,3 +55,9 @@ $ ./sail.sh artisan migrate
 ```shell
 $ ./sail.sh artisan db:seed
 ```
+
+### 6. Наполните каталог случайными остатками товаров
+
+```shell
+$ ./sail.sh artisan stock:randomize
+```
