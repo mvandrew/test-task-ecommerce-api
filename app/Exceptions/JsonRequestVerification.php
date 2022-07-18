@@ -16,9 +16,6 @@ abstract class JsonRequestVerification extends Exception
     /** @var string[] Сообщения об ошибках верификации. */
     protected array $verificationErrors;
 
-    /** @var string|null Ключевое сообщение об ошибке для исключения. */
-    protected ?string $keyMessage;
-
     /**
      * Конструктор класса.
      *
@@ -28,7 +25,7 @@ abstract class JsonRequestVerification extends Exception
     {
         parent::__construct();
 
-        $this->keyMessage = null;
+        $this->message = '';
 
         $this->verificationErrors = [];
         foreach ($errors as $error) {
@@ -51,8 +48,8 @@ abstract class JsonRequestVerification extends Exception
     {
         $messages = [];
 
-        if (!is_null($this->keyMessage)) {
-            $messages[] = $this->keyMessage;
+        if (!empty($this->message)) {
+            $messages[] = $this->message;
         }
 
         foreach ($this->verificationErrors as $verificationError) {

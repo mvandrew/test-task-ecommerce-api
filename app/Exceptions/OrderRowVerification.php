@@ -10,10 +10,15 @@ namespace App\Exceptions;
  */
 class OrderRowVerification extends JsonRequestVerification
 {
+    /**
+     * Конструктор класса.
+     *
+     * @param    array    $errors   Ошибки проверки значений полей запроса.
+     */
     public function __construct(array $errors)
     {
         parent::__construct($errors);
 
-        $this->keyMessage = __('catalog.error_order_row_verification');
+        $this->message = __('catalog.error_order_row_verification');
     }
 }

@@ -20,7 +20,7 @@ class OrderCreationRequest extends JsonRequestVerification
     {
         parent::__construct($errors);
 
-        $this->keyMessage = __('catalog.error_order_creation_request');
+        $this->message = __('catalog.error_order_creation_request');
     }
 
 }
