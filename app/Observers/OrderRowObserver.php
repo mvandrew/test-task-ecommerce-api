@@ -5,6 +5,12 @@ namespace App\Observers;
 use App\Models\Order;
 use App\Models\OrderRow;
 
+/**
+ * App\Observers\OrderRowObserver
+ *
+ * @Class OrderRowObserver Обработка изменений в строке заказа.
+ * @package App\Observers
+ */
 class OrderRowObserver
 {
     /**
