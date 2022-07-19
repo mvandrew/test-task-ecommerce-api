@@ -20,6 +20,27 @@ servers:
 
 components:
   schemas:
+    categoriesList:
+      type: array
+      description: Массив категорий каталога товаров.
+      items:
+        properties:
+          id:
+            type: integer
+            description: ИД категории товаров.
+            example: 27
+
+          name:
+            type: string
+            description: Наименование категории товаров.
+            example: "Планшеты"
+
+          category_id:
+            type: integer
+            nullable: true
+            description: ИД родительской категории товаров.
+            example: null
+
     orderDetails:
       type: object
       description: Подробная информация о заказе.
@@ -247,3 +268,79 @@ paths:
                     description: Сообщения об ошибках при создании заказа.
                     items:
                       example: "Недостаточно товара Смартфон Apple iPhone 12 128Gb Белый (24) для заказа 39999 единиц. В наличии 151."
+
+  /categories:
+    get:
+      summary: Корневые категории каталога товаров
+      description: Список корневых категорий каталога товаров.
+      tags:
+        - Category
+      responses:
+        200:
+          description: Список корневых категорий каталога товаров.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoriesList'
+
+  /categories/{id}:
+    get:
+      summary: Категории каталога товаров в заданной области подчинения
+      description: |
+        Список вложенных категорий каталога товаров в заданной области подчинения.
+
+        Выводятся только категории подчинённые заданной без рекурсивного вложения.
+      parameters:
+        - name: id
+          description: ИД родительской категории каталога товаров.
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 22
+      tags:
+        - Category
+      responses:
+        200:
+          description: Список категорий каталога товаров.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoriesList'
+
+        404:
+          description: Корневая категория каталога товаров не найдена.
+
+  /categories/tree:
+    get:
+      summary: Корневое дерево категорий каталога товаров
+      description: Дерево категорий каталога товаров, начиная от корневого уровня вложенности категорий.
+      tags:
+        - Category
+      responses:
+        200:
+          description: Массив дерева категорий каталога товаров.
+
+        404:
+          description: Корневая категория каталога товаров не найдена.
+
+  /categories/tree/{id}:
+    get:
+      summary: Дерево категорий каталога товаров в заданной области подчинения
+      description: Дерево категорий каталога товаров в заданной области подчинения.
+      parameters:
+        - name: id
+          description: ИД родительской категории каталога товаров.
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 22
+      tags:
+        - Category
+      responses:
+        200:
+          description: Массив дерева категорий каталога товаров.
+
+        404:
+          description: Корневая категория каталога товаров не найдена.
