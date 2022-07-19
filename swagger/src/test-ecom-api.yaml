@@ -1,0 +1,15 @@
+openapi: 3.0.3
+
+info:
+  title: API Интернет-магазина для тестового задания
+  description: Функции взаимодействия с API Интернет-магазина для тестового задания.
+  version: 1.0.0
+  contact:
+    name: Andrey Mishchenko
+    email: msav@msav.ru
+    url: https://msav.ru
+
+tags:
+  - Order
+  - Product
+  - Category
