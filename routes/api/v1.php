@@ -37,7 +37,8 @@ Route::prefix('v1')->group(function () {
                 ->where('id', '\d+');
 
             // Формирование дерева категорий
-            Route::get('tree', 'tree');
+            Route::get('tree/{id?}', 'tree')
+                ->where('id', '\d+');
 
         });
 

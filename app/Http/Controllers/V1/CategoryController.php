@@ -25,8 +25,19 @@ class CategoryController extends Controller
         );
     }
 
-    public function tree()
+    /**
+     * Отображает дерево категорий каталога товаров в заданной области подчинения.
+     *
+     * @param    int|null    $id    ИД родительской категории каталога товаров.
+     *
+     * @return JsonResponse
+     */
+    public function tree(int $id = null): JsonResponse
     {
-
+        return response()->json(
+            [
+                'data' => CategoriesManager::tree($id)
+            ]
+        );
     }
 }
