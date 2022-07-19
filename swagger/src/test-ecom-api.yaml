@@ -13,3 +13,237 @@ tags:
   - Order
   - Product
   - Category
+
+servers:
+  - url: http://localhost:14680/api/v1
+    description: Локальный сайт разработчика
+
+components:
+  schemas:
+    orderDetails:
+      type: object
+      description: Подробная информация о заказе.
+      properties:
+        id:
+          type: integer
+          description: ИД заказа.
+          example: 59
+
+        user_id:
+          type: integer
+          description: |
+            ИД зарегистрированного пользователя, от лица которого оформлен заказ.
+
+            Если заказ оформлен анонимным пользователем, то значение поля будет null.
+          example: null
+
+        email:
+          type: string
+          description: Адрес E-Mail для отправки уведомлений.
+          maxLength: 255
+          example: some@mail.ru
+
+        phone:
+          type: string
+          description: Номер телефона пользователя.
+          maxLength: 50
+          nullable: true
+          example: "+7-916-588-1977"
+
+        address:
+          type: string
+          description: Адрес доставки заказа.
+          example: "г.Киров, ул.Ленина, д.4, кв.18"
+
+        customer_comment:
+          type: string
+          description: Комментарий покупателя к заказу.
+          example: "Положите поздравительную открытку."
+
+        status:
+          type: integer
+          description: |
+            Текущий статус заказа:
+            * `0` - Открыт
+            * `1` - В обработке
+            * `2` - Доставлен
+            * `3` - Отменён
+            * `4` - Закрыт
+          enum: [0, 1, 2, 3, 4]
+          example: 0
+
+        sum_amount:
+          type: number
+          description: Общая сумма заказа.
+          example: 249460
+
+        created_at:
+          type: string
+          description: Дата создания заказа.
+          example: "2022-07-18T22:13:14.000000Z"
+
+        updated_at:
+          type: string
+          description: Дата изменения заказа.
+          example: "2022-07-18T22:13:14.000000Z"
+
+        rows:
+          type: array
+          description: Строки заказа.
+          items:
+            properties:
+              product_id:
+                type: integer
+                description: ИД товара.
+                example: 24
+
+              qty:
+                type: integer
+                description: Заказываемое количество товара.
+                example: 3
+
+              price:
+                type: number
+                description: Цена за единицу товара.
+                example: 68990
+
+              amount:
+                type: number
+                description: Сумма по строке.
+                example: 206970
+
+
+paths:
+  /orders:
+    get:
+      summary: Список заказов
+      description: Выводит список доступных заказов покупателей.
+      tags:
+        - Order
+      responses:
+        200:
+          description: Список доступных заказов покупателей.
+
+
+  /orders/{id}:
+    get:
+      summary: Подробности заказа
+      description: Подробная информация о заказе, включая состав строк заказа.
+      tags:
+        - Order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ИД запрашиваемого заказа покупателя.
+          schema:
+            type: integer
+            example: 59
+      responses:
+        200:
+          description: Полная информация по заказу.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/orderDetails'
+
+        404:
+          description: Заказ с запрашиваемым {id} не обнаружен в БД.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Сообщение об ошибке.
+                    example: "Заказ 59 не найден в журнале заказов."
+
+  /orders/create:
+    post:
+      summary: Создание заказа покупателя
+      description: Запрос на создание нового заказа покупателя.
+      tags:
+        - Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - email
+                - products
+                - address
+              properties:
+                email:
+                  type: string
+                  description: Адрес E-Mail для отправки уведомлений.
+                  maxLength: 255
+                  example: some@mail.ru
+
+                user_id:
+                  type: integer
+                  nullable: true
+                  description: ИД пользователя, от лица которого формируется заказ.
+                  example: 2
+
+                phone:
+                  type: string
+                  description: Номер телефона пользователя.
+                  maxLength: 50
+                  nullable: true
+                  example: "+7-916-588-1977"
+
+                address:
+                  type: string
+                  description: Адрес доставки заказа.
+                  example: "г.Киров, ул.Ленина, д.4, кв.18"
+
+                customer_comment:
+                  type: string
+                  description: Комментарий покупателя к заказу.
+                  example: "Положите поздравительную открытку."
+
+                products:
+                  type: array
+                  description: Перечень заказываемых товаров.
+                  items:
+                    required:
+                      - product_id
+                      - qty
+                    properties:
+                      product_id:
+                        type: integer
+                        description: ИД товара.
+                        example: 12
+                      qty:
+                        type: integer
+                        description: Заказываемое количество товара.
+                        example: 9
+
+      responses:
+        200:
+          description: Подробности созданного заказа покупателя.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/orderDetails'
+
+        400:
+          description: Ошибка при создании заказа.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: array
+                    description: Сообщения об ошибках при создании заказа.
+                    items:
+                      example: "Недостаточно товара Смартфон Apple iPhone 12 128Gb Белый (24) для заказа 39999 единиц. В наличии 151."
