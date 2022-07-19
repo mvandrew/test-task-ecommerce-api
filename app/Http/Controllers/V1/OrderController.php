@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\V1;
 
-use App\Exceptions\EmptyOrderProducts;
 use App\Exceptions\OrderNotFound;
 use App\Http\Controllers\Controller;
 use App\Lib\Orders\OrderManager;
-use http\Client\Curl\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
@@ -14,13 +12,17 @@ use Throwable;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Отображает общий список доступных заказов.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        return response()->json(['status' => true]);
+        return response()->json(
+            [
+                'data' => OrderManager::index()
+            ]
+        );
     }
 
     /**
@@ -59,14 +61,4 @@ class OrderController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

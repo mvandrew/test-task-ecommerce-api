@@ -160,4 +160,16 @@ class OrderManager
         }
     }
 
+    /**
+     * Возвращает список доступных заказов.
+     *
+     * @return array
+     */
+    public static function index(): array
+    {
+        return Order::orderBy('created_at')
+            ->get()
+            ->toArray();
+    }
+
 }
